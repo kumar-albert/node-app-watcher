@@ -7,15 +7,27 @@ A simple node module which acts as a serverless program to monitor your        a
 
 ```watcher.start(config<object>);```
 
-```
+
 Config object should contains following properties
-    1. email: "gmail-id"
-            Email id for sending notification(From mail id)
-    2. pass: "gmail-password"
-    3. to: ["email-id", "email-id"]
-        add one or multiple gmail ids for getting notification from watcher
-    4. appUrl:  - Application URL to be monitored
-```
+1. email: "gmail-id"
+    Email id for sending notification(From mail id)
+2. pass: "gmail-password"
+3. to: ["email-id", "email-id"]
+    add one or multiple gmail ids for getting notification from watcher
+4. appUrl:  - Application URL to be monitored
+5. emailContent - this is a optional parameter,
+    you can change subject and content of notification email
+
+
+
+## Email Content
+
+**emailContent** is a optional parameter, it has two attributes
+
+ 1. success {**subject** (String), **body** (String or HTMLString)}
+
+ 2. failure {**subject** (String), **body** (String or HTMLString)}
+   
 
 ## Email Notication
 We are using node mailer for sending emails. So you can add multible to email ids
@@ -35,10 +47,22 @@ watcher.start({
     from: "*****@gmail.com",
     pass: "***********",
     to: ["****@gmail.com", "****@hotmail.com", "*****@domain.com"],
-    appUrl: "http://application.com/"
+    appUrl: "http://application.com/",
+
+
+    emailContent: {         //optional parameter
+        success: {
+            subject: "",
+            body: ""
+        },
+        failure: {
+            subject: "",
+            body: ""
+        }
+    }
 });
 
 
-node watcher.js;
+$ node watcher.js;
 
 ```
