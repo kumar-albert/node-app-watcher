@@ -19,6 +19,13 @@ Config object should contains following properties
     you can change subject and content of notification email
 
 
+| Key            | Type      |Optional| Description                       |
+|----------------|-----------|--------|-----------------------------------|
+| email          | String    |false| Email id for sending notification. Email id should be gmail account id. |
+| pass           | String    |false|  Password of gmail account. |
+| to             | Array[String] or String|false|  Here you add your notification receivers list |
+| appUrl         | String    |false| Application url checking status about application |
+| emailContent   | Object    |true|  This is a optional parameter. You can change email content.| 
 
 ## Email Content
 
@@ -27,7 +34,13 @@ Config object should contains following properties
  1. success {**subject** (String), **body** (String or HTMLString)}
 
  2. failure {**subject** (String), **body** (String or HTMLString)}
-   
+
+| key           | Type            |Optional| Description               | default values |
+|---------------|-----------------|--------|---------------------------|---------|
+| emailContent.success.subject| String|true| Optional parameter. You can add you success email subject| App Status - Started |
+| emailContent.success.body| String or HTML String|true| Optional parameter. You can add you success email body| <div>Your application started at Mon Mar 01 2018 16:50:02 GMT+0530 (IST)</div> |
+| emailContent.failure.subject| String|true| Optional parameter. You can add you failure email subject|App Status - Terminated|
+| emailContent.success.body| String|true| Optional parameter. You can add you failure email body|<div>Your application terminated due to [Reason]</div>|
 
 ## Email Notication
 We are using node mailer for sending emails. So you can add multible to email ids
